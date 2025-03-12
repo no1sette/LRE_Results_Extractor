@@ -58,7 +58,7 @@ dfFail = ['Fail']
 #Passing rate coloumn being created and added
 df1['TPS'] = ((df1[dfPass].sum(axis=1) / total)).round(2)
 df1['Passing Rate'] = ((1-df1[dfFail].sum(axis=1) / df1[dflist].sum(axis=1))).round(2)
-df1['Failing Rate'] = ((df1[dfFail.sum(axis=1) / df1[dflist].sum(axis=1))).round(2)
+df1['Failing Rate'] = ((df1[dfFail].sum(axis=1) / df1[dflist].sum(axis=1))).round(2)
 
 #print to output
 print(df1)
