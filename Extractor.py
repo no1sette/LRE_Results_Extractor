@@ -42,7 +42,7 @@ total = extractTotalTime(summaryReport)
 dfTransTable = pd.read_html(summaryReport, attrs={"id" : "TransactionsTable"})
 
 #Pull Data from table html
-data_cols = ['Transaction Name', 'Average', '90 Percent', 'Pass', 'Fail']
+data_cols = ['Transaction Name', 'Average', '90 Percent', 'Maximum', 'Pass', 'Fail']
 
 #transaction summary table
 df1 = dfTransTable[0][data_cols]
@@ -59,6 +59,9 @@ dfFail = ['Fail']
 df1['TPS'] = ((df1[dfPass].sum(axis=1) / total)).round(2)
 df1['Passing Rate'] = ((1-df1[dfFail].sum(axis=1) / df1[dflist].sum(axis=1))).round(2)
 df1['Failing Rate'] = ((df1[dfFail].sum(axis=1) / df1[dflist].sum(axis=1))).round(2)
+
+#Change column layout
+df1 = df1[['Transaction Name', 'Average', '90 Percent', 'TPS', 'Pass', 'Fail', 'Pasing Rate', 'Failing Rate', 'Maximum']]
 
 #print to output
 print(df1)
