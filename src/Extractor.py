@@ -51,7 +51,7 @@ dfTransTable = pd.read_html(summaryReport, attrs={"id": "TransactionsTable"})
 
 # Pull Data from table html
 data_cols = ['Transaction Name', 'Average',
-             '90 Percent', 'Maximum', 'Pass', 'Fail']
+             '90 Percent', 'Minimum', 'Maximum', 'Pass', 'Fail']
 
 # transaction summary table
 df1 = dfTransTable[0][data_cols]
@@ -73,13 +73,13 @@ df1['Failing Rate'] = (
 
 # Change column layout
 df1 = df1[['Transaction Name', 'Average', '90 Percent', 'TPS',
-           'Pass', 'Fail', 'Pasing Rate', 'Failing Rate', 'Maximum']]
+           'Pass', 'Fail', 'Pasing Rate', 'Failing Rate', 'Minimum', 'Maximum']]
 
 # print to output
 print(df1)
 
 # saving to excel sheet. Tested on Windows.
 with pd.ExcelWriter(output_file) as writer:
-    df1.to_excel(writer, "Sheet1")
+    df1.to_excel(writer, index=False, sheet_name="Sheet1")
 
 os.startfile(output_file)

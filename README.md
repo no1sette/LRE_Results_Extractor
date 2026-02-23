@@ -1,10 +1,19 @@
 # LRE_Results_Extractor
+
 Short Script to pull out essential report
 
 Personally I got tired of copying and pasting high level reports from the LRE generated reports to send out.
 So I worked on a personal solution to save some time and not have to deal with manually creating this part of the report.
 
+# Prep
+
+Make sure you have python installed
+then we'll go ahead and install the modules needed
+
+`pip install lxml openpyxl beautifulsoup4 pandas`
+
 # How it works
+
 Download the Export.zip file from LRE.
 Put the directory for the files you're going to be working with in the script.
 Export.zip, 'Export.zip directory', 'unziped file directory',' directory of the output/excel file as well as the file'
